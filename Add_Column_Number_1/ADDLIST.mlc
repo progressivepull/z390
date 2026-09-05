@@ -1,0 +1,52 @@
+*****************************************************************
+* ADDLIST - Add a list of numbers
+* z390 MLC
+*****************************************************************
+
+ADDLIST  CSECT
+
+         LR    12,15
+         USING ADDLIST,12
+
+         LA    5,0              * R5 = total
+         LA    6,NUMBERS        * R6 = address of list
+         LA    7,COUNT          * R7 = number of entries
+         L     7,0(7)
+
+LOOP     C     7,=F'0'
+         BE    DONE
+
+         L     3,0(6)           * Get next number
+         AR    5,3              * Add to total
+
+         LA    6,4(6)            * Next list item
+         BCT   7,LOOP
+
+DONE     CVD   5,PACKED
+         UNPK  OUTPUT,PACKED
+
+         WTO   'TOTAL OF LIST:'
+         WTO   OUTPUT
+
+         XR    15,15
+         BR    14
+
+
+*****************************************************************
+* DATA
+*****************************************************************
+
+NUMBERS  DC    F'10'
+         DC    F'20'
+         DC    F'30'
+         DC    F'40'
+         DC    F'50'
+
+COUNT    DC    F'5'
+
+PACKED   DS    D
+
+OUTPUT   DS    CL16
+
+
+         END   ADDLIST

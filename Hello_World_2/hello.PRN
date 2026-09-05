@@ -1,0 +1,37 @@
+13:33:21 hello     MZ390 START USING z390 V1.5.06 ON J2SE 1.8.0_211 09/05/26
+AZ390I Copyright 2011 Automated Software Tools Corporation
+AZ390I z390 is licensed under GNU General Public License
+AZ390I program = C:\z390\work\Hello_World_2\hello
+AZ390I options = sysmac(C:\PROGRA~2\AUTOMA~1\z390\mac+.) 
+  syscpy(C:\PROGRA~2\AUTOMA~1\z390\mac+.)
+External Symbol Definitions
+ ESD=0001 LOC=00000000 LEN=00000020 TYPE=CST NAME=HELLO
+Assembler Listing
+000000                                        (1/1)1 * Hello World for z390 MLC
+000000                                        (1/2)2 HELLO    CSECT 
+000000 18CF                                   (1/3)3          LR    12,15
+000002                                        (1/4)4          USING HELLO,12
+LISTUSE HELLO    ESD=0001 LOC=00000000 LEN=01000 REG=C OFF=00000 LAB=
+000002                                        (1/6)5          WTO   'Hello World'
+000002 A715000A                000016        (2/49)6+         BRAS  1,*+(WTO#0001_EOT-*+1)/2*2
+000006 000F0000C8859393                      (2/50)7+         DC    AL2(WTO#0001_EOT-*,0),C'Hello World'
+000015                  00000015             (2/51)8+WTO#0001_EOT     EQU *
+000016 0A23                                  (2/52)9+         SVC   35
+000018 17FF                                  (1/8)11          XR    15,15
+00001A 07FE                                  (1/9)12          BR    14
+00001C                                      (1/11)13          END   HELLO
+
+Symbol Table Listing
+
+ SYM=HELLO    LOC=00000000 LEN=00000020 ESD=0001 TYPE=CST  XREF=2 4 13 
+ SYM=WTO#0001_EOT LOC=00000015 LEN=00000001 ESD=0001 TYPE=REL  XREF=8 6 7 
+
+Literal Table Listing
+
+ 
+AZ390I total mnote warnings = 0
+AZ390I total mnote errors   = 0
+AZ390I max   mnote level    = 0
+AZ390I total mz390 errors   = 0
+AZ390I total az390 errors   = 0
+13:33:22 hello     MZ390 ENDED   RC= 0 SEC= 0 MEM(MB)= 42 IO=126

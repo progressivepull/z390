@@ -1,0 +1,11 @@
+* Hello World for z390 MLC
+HELLO    CSECT
+         LR    12,15
+         USING HELLO,12
+
+         WTO   'Hello World'
+
+         XR    15,15
+         BR    14
+
+         END   HELLO

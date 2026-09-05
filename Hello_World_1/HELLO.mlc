@@ -1,0 +1,14 @@
+HELLO    CSECT
+         PRINT NOGEN
+         STM   14,12,12(13)      Save registers
+         BALR  12,0              Establish base register
+         USING *,12
+
+         WTO   'HELLO WORLD FROM Z390 MLC!'
+
+         L     13,4(,13)         Restore caller save area
+         LM    14,12,12(13)      Restore registers
+         XR    15,15             Return code = 0
+         BR    14                Return to caller
+         END   HELLO
+
