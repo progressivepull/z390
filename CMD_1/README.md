@@ -1,0 +1,12 @@
+```
+cd /C/z390/work/CMD
+```
+
+
+```
+chmod +x run-command.sh
+```
+
+```
+./run-command.sh
+```

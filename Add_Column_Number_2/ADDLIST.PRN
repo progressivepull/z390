@@ -1,0 +1,51 @@
+15:11:43 ADDLIST   MZ390 START USING z390 V1.5.06 ON J2SE 1.8.0_211 09/05/26
+AZ390I Copyright 2011 Automated Software Tools Corporation
+AZ390I z390 is licensed under GNU General Public License
+AZ390I program = C:\z390\work\Add_Column_Number_2\ADDLIST
+AZ390I options = sysmac(C:\PROGRA~2\AUTOMA~1\z390\mac+.) 
+  syscpy(C:\PROGRA~2\AUTOMA~1\z390\mac+.)
+External Symbol Definitions
+ ESD=0001 LOC=00000000 LEN=00000038 TYPE=CST NAME=ADDLIST
+Assembler Listing
+000000                                        (1/1)1 *****************************************************************
+000000                                        (1/2)2 * ADDLIST - Add list of numbers
+000000                                        (1/3)3 * z390 V1.5.06
+000000                                        (1/4)4 *****************************************************************
+000000                                        (1/6)5 ADDLIST  CSECT 
+000000 18CF                                   (1/8)6          LR    12,15
+000002                                        (1/9)7          USING ADDLIST,12
+LISTUSE ADDLIST  ESD=0001 LOC=00000000 LEN=01000 REG=C OFF=00000 LAB=
+000002 41500000                              (1/11)8          LA    5,0              * TOTAL
+000006 4160C020                000020        (1/12)9          LA    6,NUMBERS        * LIST ADDRESS
+00000A 5870C034                000034       (1/13)10          L     7,COUNT          * NUMBER OF ITEMS
+00000E 58360000                             (1/15)11 LOOP     L     3,0(6)
+000012 1A53                                 (1/16)12          AR    5,3
+000014 41660004                             (1/18)13          LA    6,4(6)
+000018 4670C00E                00000E       (1/19)14          BCT   7,LOOP
+00001C                                      (1/21)15 * Put total in return code
+00001C 18F5                                 (1/23)16          LR    15,5
+00001E 07FE                                 (1/25)17          BR    14
+000020 0000000A                             (1/28)18 NUMBERS  DC    F'10'
+000024 00000014                             (1/29)19          DC    F'20'
+000028 0000001E                             (1/30)20          DC    F'30'
+00002C 00000028                             (1/31)21          DC    F'40'
+000030 00000032                             (1/32)22          DC    F'50'
+000034 00000005                             (1/34)23 COUNT    DC    F'5'
+000038                                      (1/37)24          END   ADDLIST
+
+Symbol Table Listing
+
+ SYM=ADDLIST  LOC=00000000 LEN=00000038 ESD=0001 TYPE=CST  XREF=5 7 24 
+ SYM=COUNT    LOC=00000034 LEN=00000004 ESD=0001 TYPE=REL  XREF=23 10 
+ SYM=LOOP     LOC=0000000E LEN=00000004 ESD=0001 TYPE=REL  XREF=11 14 
+ SYM=NUMBERS  LOC=00000020 LEN=00000004 ESD=0001 TYPE=REL  XREF=18 9 
+
+Literal Table Listing
+
+ 
+AZ390I total mnote warnings = 0
+AZ390I total mnote errors   = 0
+AZ390I max   mnote level    = 0
+AZ390I total mz390 errors   = 0
+AZ390I total az390 errors   = 0
+15:11:44 ADDLIST   MZ390 ENDED   RC= 0 SEC= 0 MEM(MB)= 42 IO=90

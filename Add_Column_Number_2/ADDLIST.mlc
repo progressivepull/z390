@@ -1,0 +1,37 @@
+*****************************************************************
+* ADDLIST - Add list of numbers
+* z390 V1.5.06
+*****************************************************************
+
+ADDLIST  CSECT
+
+         LR    12,15
+         USING ADDLIST,12
+
+         LA    5,0              * TOTAL
+         LA    6,NUMBERS        * LIST ADDRESS
+         L     7,COUNT          * NUMBER OF ITEMS
+
+LOOP     L     3,0(6)
+         AR    5,3
+
+         LA    6,4(6)
+         BCT   7,LOOP
+
+* Put total in return code
+
+         LR    15,5
+
+         BR    14
+
+
+NUMBERS  DC    F'10'
+         DC    F'20'
+         DC    F'30'
+         DC    F'40'
+         DC    F'50'
+
+COUNT    DC    F'5'
+
+
+         END   ADDLIST
